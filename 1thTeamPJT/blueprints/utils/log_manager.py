@@ -15,15 +15,12 @@ def save_log(log_data):    # 1. 저장함수
     logs = load_logs()      #기존 로그 전부 불러오기(load_logs 함수사용)
     log_data["id"] = len(logs) + 1      # id값 자동부여 1씩증가
     
-    #드론별 폴더 자동생성
-    drone_folder = f"static/captures/drone{log_data['drone_id']}"
-    os.makedirs(drone_folder, exist_ok=True)    
-    
+        
     logs.append(log_data)       #새 로그를 맨뒤추가
 
     with open(LOG_PATH, "w", encoding="utf-8") as f:
         json.dump(logs, f, ensure_ascii=False, indent=2)
-    #목록전체 파일에 다시저장
+    #logs전체 파일을 json으로 다시저장
     # w = 쓰기모드,  ensure_ascii=False 한글 깨짐방지
     # indent=2 들여쓰기
     # as f = 파일 객체를 f 이름으로 사용
@@ -39,9 +36,9 @@ def load_logs():    # 2.읽기 함수
         try:
             return json.load(f)         #파이선 리스트로 변환후 반환
         except json.JSONDecodeError:    #내용이 문제(깨지거나 비었을때)있으면 발생하는 에러
-            return []
+            return []                   # 에러시 빈 리스트 반환
     
-def filter_today():
+def filter_today():         #오늘 날짜 로그만 골라서 반환하는 함수
     logs = load_logs()      #전체 로그 불러오기
 
     today = datetime.now().strftime("%Y-%m-%d")
@@ -50,6 +47,7 @@ def filter_today():
     return [log for log in logs if log["time"].startswith(today)]
     #각 로그의 time이 오늘 날짜로 시작하는 것만 골라 새목록 만들기
 
+# 테스트
 if __name__ == "__main__":
     save_log({
         "type": "위험구역 침입",
@@ -57,7 +55,7 @@ if __name__ == "__main__":
         "confidence": 0.92,
         "location": "A구역",
         "drone_id": 1,
-        "image": "static/captures/drone1_zoneA_2026-07-01_143000.jpg"
+        "image": "static/captures/drone1/drone1_zoneA_2026-07-01_143000.jpg"
           })
     print(load_logs())
 
