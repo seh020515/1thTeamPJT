@@ -2,6 +2,37 @@
   {
     "type": "위험구역 침입",
     "time": "2026-07-01 14:31:00",
-    "confidence": 0.92
+    "confidence": 0.92,
+    "location": "A구역",
+    "drone_id": 1,
+    "image": "static/captures/drone1_zoneA_2026-07-01_143000.jpg",
+    "id": 1
+  },
+  {
+    "type": "위험구역 침입",
+    "time": "2026-07-01 14:31:00",
+    "confidence": 0.92,
+    "location": "A구역",
+    "drone_id": 1,
+    "image": "static/captures/drone1_zoneA_2026-07-01_143000.jpg",
+    "id": 2
+  },
+  {
+    "type": "위험구역 침입",
+    "time": "2026-07-01 14:31:00",
+    "confidence": 0.92,
+    "location": "A구역",
+    "drone_id": 1,
+    "image": "static/captures/drone1_zoneA_2026-07-01_143000.jpg",
+    "id": 3
+  },
+  {
+    "type": "위험구역 침입",
+    "time": "2026-07-01 14:31:00",
+    "confidence": 0.92,
+    "location": "A구역",
+    "drone_id": 1,
+    "image": "static/captures/drone1_zoneA_2026-07-01_143000.jpg",
+    "id": 4
   }
 ]

@@ -7,13 +7,18 @@ LOG_PATH = "db/intrusion_log.json"      #로그 저장 경로
 
 '''
 함수
-  save_log 새로그 json파일에 저장
-load_logs 저장된 로그 전체읽기
-filter_today  오늘날짜 필터
+    save_log 새로그 json파일에 저장
+    load_logs 저장된 로그 전체읽기
+    filter_today  오늘날짜 필터
 '''
 def save_log(log_data):    # 1. 저장함수
     logs = load_logs()      #기존 로그 전부 불러오기(load_logs 함수사용)
-
+    log_data["id"] = len(logs) + 1      # id값 자동부여 1씩증가
+    
+    #드론별 폴더 자동생성
+    drone_folder = f"static/captures/drone{log_data['drone_id']}"
+    os.makedirs(drone_folder, exist_ok=True)    
+    
     logs.append(log_data)       #새 로그를 맨뒤추가
 
     with open(LOG_PATH, "w", encoding="utf-8") as f:
@@ -46,7 +51,14 @@ def filter_today():
     #각 로그의 time이 오늘 날짜로 시작하는 것만 골라 새목록 만들기
 
 if __name__ == "__main__":
-    save_log({"type": "위험구역 침입", "time": "2026-07-01 14:31:00", "confidence": 0.92})
+    save_log({
+        "type": "위험구역 침입",
+        "time": "2026-07-01 14:31:00",
+        "confidence": 0.92,
+        "location": "A구역",
+        "drone_id": 1,
+        "image": "static/captures/drone1_zoneA_2026-07-01_143000.jpg"
+          })
     print(load_logs())
 
 
