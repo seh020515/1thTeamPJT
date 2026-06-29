@@ -5,6 +5,15 @@ from datetime import datetime, timedelta
 
 from ultralytics import YOLO
 
+model = YOLO('yolov8n.pt')
+
+model.train(
+    data='data.yaml 경로',  # 예: 'C:/shark/data.yaml'
+    epochs=50,
+    imgsz=640,
+    batch=8
+)
+
 from utils.json_manager import (
     load_intrusion_logs,
     save_intrusion_logs
