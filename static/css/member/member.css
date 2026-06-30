@@ -1,0 +1,125 @@
+.login-container,
+.signup-container,
+.modify-container {
+    width: 100%;
+    min-height: calc(100vh - 140px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.login-box,
+.signup-box,
+.modify-box {
+    width: 450px;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.signup-box {
+    width: 500px;
+}
+
+.modify-box {
+    width: 550px;
+}
+
+.login-box h2,
+.signup-box h2,
+.modify-box h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #1f2937;
+}
+
+.input-box {
+    margin-bottom: 20px;
+}
+
+.input-box label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #374151;
+}
+
+.input-box input,
+.input-box select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.input-box input:focus,
+.input-box select:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.login-btn,
+.signup-btn,
+.save-btn {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.login-btn:hover,
+.signup-btn:hover,
+.save-btn:hover {
+    background-color: #1d4ed8;
+}
+
+.login-menu,
+.signup-menu {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.login-menu a,
+.signup-menu a {
+    color: #2563eb;
+    font-weight: bold;
+}
+
+.login-menu span,
+.signup-menu span {
+    margin: 0 10px;
+    color: #9ca3af;
+}
+
+.button-area {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.button-area .save-btn {
+    flex: 1;
+}
+
+.cancel-btn {
+    flex: 1;
+    background-color: #6b7280;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.cancel-btn:hover {
+    background-color: #4b5563;
+}

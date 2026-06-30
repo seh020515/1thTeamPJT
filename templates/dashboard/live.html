@@ -1,0 +1,49 @@
+{% include 'include/header.html' %}
+{% include 'include/nav.html' %}
+
+<main class="live-container">
+
+    <h2>실시간 영상</h2>
+
+    <section class="live-section">
+
+        <div class="live-video-box">
+
+            <img
+                src="{{ url_for('dashboard.video_feed') }}"
+                alt="실시간 드론 영상">
+
+        </div>
+
+        <div class="live-info-box">
+
+            <h3>AI 감지 결과</h3>
+
+            <p>
+                현재 상태:
+                <span class="status safe">
+                    정상
+                </span>
+            </p>
+
+            <p>
+                감지 유형:
+                <span>
+                    없음
+                </span>
+            </p>
+
+            <p>
+                감지 시간:
+                <span>
+                    {{ detect_time }}
+                </span>
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+{% include 'include/footer.html' %}

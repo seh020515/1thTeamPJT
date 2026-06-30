@@ -1,0 +1,57 @@
+<header>
+
+    <div class="logo">
+        <a href="{{ url_for('dashboard.dashboard') }}">
+            DRONE CONTROL SYSTEM
+        </a>
+    </div>
+
+    <nav>
+        <ul>
+
+            <li>
+                <a href="{{ url_for('dashboard.dashboard') }}">
+                    대시보드
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('dashboard.live') }}">
+                    실시간 영상
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('dashboard.logs') }}">
+                    사고 이력
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('dashboard.statistics') }}">
+                    통계
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('dashboard.settings') }}">
+                    설정
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('member.modify_form') }}">
+                    회원정보
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('member.signout') }}">
+                    로그아웃
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+
+</header>
