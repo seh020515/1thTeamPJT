@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% include 'include/title.html' %}
+
+    <link href="{{ url_for('static', filename='css/common.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/member/member.css') }}" rel="stylesheet">
+
+</head>
+<body>
+    
+    {% include 'include/header.html' %}
+    {% include 'include/nav.html' %}
+
+    <article id="delete_wrap">
+
+        <div class="delete_result">
+            <h3>DELETE SUCCESS!!</h3>
+        </div>
+        
+    </article>
+
+    {% include 'include/footer.html' %}
+
+</body>
+</html>
