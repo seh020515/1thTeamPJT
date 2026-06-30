@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>드론 관제 시스템</title>
+    <link rel="stylesheet" href="../static/css/index.css">
+</head>
+<body>
+    <div>
+        <div class="header">
+            <h4>드론 관제</h4>
+            <a href="#">관리자 로그아웃</a>
+        </div>
+
+    <div class="main-container">
+
+        <div class="sidebar">
+            <h3>메뉴</h3>
+            <p>대시보드</p>
+            <p>실시간 영상</p>
+            <p>기록</p>
+            <p>설정</p>
+            <p>사용자 설정</p>
+        </div>
+
+    <div class="content-wrapper">
+
+        <div class="main-content">
+            <h2>대시보드</h2>
+            <p>드론 연결 상태 연결</p>
+            <p>현재 감지 상태: 정상/위험</p>
+        </div>
+
+        <div class="dashboard-content">
+            <p>일일 감지 건수: xx건 | 최근 사고 목록</p>
+            <div class="video-container">
+            <p>실시간 영상 미리보기</p>
+    
+            <img src="/video_feed" class="video-stream">
+    
+            <p id="network-alert">장애 알림: 정상 작동 중</p>
+            </div>
+        </div>
+
+        <div class="log-section">
+            <h2>위험 알림</h2>
+            <button class="btn">전체</button>
+            <button class="btn">침입</button>
+            <button class="btn">익수</button>
+            <button class="btn">구조요청</button>
+
+            <table class="log-table">
+                <thead>
+                    <tr>
+                    <th>번호</th>
+                    <th>날짜/시간</th>
+                    <th>사고유형</th>
+                    <th>상황 설명</th>
+                    <th>처리 상태</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                    <td>1</td>
+                    <td>2026-06-29</td>
+                    <td>익수</td>
+                    <td>2구역 익수자 감지</td>
+                    <td>미처리</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div> </div> </div> 
+    <script>
+        const alertBox = document.getElementById('network-alert')
+        setInterval(function() {
+            fetch('/camera_status')
+            .then(response => response.json())
+            .then(data => {
+                if (data.connected === true) {
+                    alertBox.innerText = "장애 알림: 정상 작동 중";
+                    alertBox.style.color = "white";
+                } else {
+                    alertBox.innerText = "연결 끊김 (카메라 확인 필요)";
+                    alertBox.style.color = "red";
+                }
+            })
+            .catch(err => console.log("서버 연결 안 됨", err))
+        }, 2000);
+
+        let allLogs = [];
+
+        fetch('/get_logs')
+        .then(response => response.json())
+        .then(data => {
+            allLogs = data;
+            displayLogs(allLogs);
+        })
+        .catch(err => console.log("로그 데이터 로드 실패:", err));
+
+        function displayLogs(logs) {
+            const tbody = document.querySelector('.log-table tbody');
+            let html = '';
+
+            logs.forEach(log => {
+                html += `
+                    <tr>
+                        <td>${log.id}</td>
+                        <td>${log.time}</td>
+                        <td>${log.type}</td>
+                        <td>${log.desc}</td>
+                        <td>${log.status}</td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = html;
+        }
+
+        const buttons = document.querySelectorAll('.btn')
+
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+
+                const selectedType = this.innerText;
+                
+                if (selectedType === '전체') {
+                    displayLogs(allLogs);
+                } else {
+                    const filteredLogs = allLogs.filter(log => log.type === selectedType);
+
+                    displayLogs(filteredLogs);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
