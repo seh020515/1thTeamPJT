@@ -39,7 +39,7 @@ def mouse_callback(event, x, y, flags, param):
         save_danger_zone({"x1": DANGER_X1, "y1": DANGER_Y1, "x2": DANGER_X2, "y2": DANGER_Y2})
         print(f"위험구역 저장: {DANGER_X1}, {DANGER_Y1}, {DANGER_X2}, {DANGER_Y2}")
 
-camera = cv2.VideoCapture(r'C:\seh\firstPjt\1thTeamPJT\1thTeamPjt\video\video.mp4')
+camera = cv2.VideoCapture(r'C:\seh\firstPjt\video\Dola.mp4')
 camera_lock = threading.Lock()
 
 ESP32_STREAM_URL = "http://192.168.137.72:81/stream"
