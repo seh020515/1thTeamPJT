@@ -1,0 +1,50 @@
+[
+    {
+        "time": "2026-06-30 11:08:49",
+        "message": "Shark Detected"
+    },
+    {
+        "time": "2026-06-30 11:08:54",
+        "message": "Shark Detected"
+    },
+    {
+        "time": "2026-06-30 11:09:00",
+        "message": "Shark Detected"
+    },
+    {
+        "time": "2026-06-30 11:09:05",
+        "message": "Shark Detected"
+    },
+    {
+        "time": "2026-06-30 11:26:35",
+        "message": "Person Intrusion in Danger Zone"
+    },
+    {
+        "time": "2026-06-30 11:26:36",
+        "message": "Shark Detected"
+    },
+    {
+        "time": "2026-06-30 11:27:32",
+        "message": "Person Intrusion in Danger Zone"
+    },
+    {
+        "time": "2026-06-30 11:27:32",
+        "message": "Shark Detected"
+    },
+    {
+        "time": "2026-06-30 11:29:48",
+        "message": "Person Intrusion in Danger Zone"
+    },
+    {
+        "time": "2026-06-30 11:29:49",
+        "message": "Shark Detected"
+    },
+    {
+        "time": "2026-06-30 11:46:00",
+        "message": "Person Intrusion in Danger Zone"
+    },
+    {
+        "time": "2026-06-30 11:46:03",
+        "message": "Shark Detected"
+    }
+]
