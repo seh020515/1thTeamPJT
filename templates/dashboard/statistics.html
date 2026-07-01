@@ -1,0 +1,88 @@
+{% include 'include/header.html' %}
+{% include 'include/nav.html' %}
+
+<main class="statistics-container">
+
+    <h2>감지 통계</h2>
+
+    <section class="statistics-top">
+
+        <div class="card">
+            <h3>오늘 감지 건수</h3>
+            <p>{{ today_count }}</p>
+        </div>
+
+        <div class="card">
+            <h3>이번 주 감지 건수</h3>
+            <p>{{ week_count }}</p>
+        </div>
+
+        <div class="card">
+            <h3>이번 달 감지 건수</h3>
+            <p>{{ month_count }}</p>
+        </div>
+
+        <div class="card">
+            <h3>전체 감지 건수</h3>
+            <p>{{ total_count }}</p>
+        </div>
+
+    </section>
+
+    <section class="statistics-chart">
+
+        <h3>일별 감지 현황</h3>
+
+        <canvas id="dailyChart"></canvas>
+
+    </section>
+
+    <section class="statistics-chart">
+
+        <h3>감지 유형별 비율</h3>
+
+        <canvas id="typeChart"></canvas>
+
+    </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const labels = JSON.parse('{{ labels | tojson | safe }}');
+    const values = JSON.parse('{{ values | tojson | safe }}');
+
+    const typeLabels = JSON.parse('{{ type_labels | tojson | safe }}');
+    const typeValues = JSON.parse('{{ type_values | tojson | safe }}');
+
+    const dailyCtx = document.getElementById('dailyChart');
+
+    new Chart(dailyCtx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: '감지 건수',
+                data: values,
+                borderWidth: 2,
+                tension: 0.3
+            }]
+        }
+    });
+
+    const typeCtx = document.getElementById('typeChart');
+
+    new Chart(typeCtx, {
+        type: 'pie',
+        data: {
+            labels: typeLabels,
+            datasets: [{
+                data: typeValues
+            }]
+        }
+    });
+</script>
+{% include 'include/footer.html' %}

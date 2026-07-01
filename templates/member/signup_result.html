@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% include 'include/title.html' %}
+
+    <link href="{{ url_for('static', filename='css/common.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/member/member.css') }}" rel="stylesheet">
+
+</head>
+<body>
+    
+    {% include 'include/header.html' %}
+    {% include 'include/nav.html' %}
+
+    <article id="signup_wrap">
+
+        
+
+        <div class="signup_result">
+            {% if result == 'OK' %}
+                <h3>SIGNUP SUCCESS!!</h3>
+            {% else %}
+                <h3>SIGNUP FAIL!!</h3>
+            {% endif %}
+        </div>
+        
+    </article>
+
+    {% include 'include/footer.html' %}
+
+</body>
+</html>

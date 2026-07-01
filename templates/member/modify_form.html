@@ -1,0 +1,73 @@
+{% include 'include/header.html' %}
+{% include 'include/nav.html' %}
+
+<div class="modify-container">
+
+    <div class="modify-box">
+
+        <h2>회원정보 수정</h2>
+
+        <form action="{{ url_for('member.modify') }}" method="post">
+
+            <div class="input-box">
+                <label>이름</label>
+                <input
+                    type="text"
+                    name="member_name"
+                    value="{{ member.member_name }}"
+                    required>
+            </div>
+
+            <div class="input-box">
+                <label>아이디</label>
+                <input
+                    type="text"
+                    name="member_id"
+                    value="{{ member.member_id }}"
+                    readonly>
+            </div>
+
+            <div class="input-box">
+                <label>이메일</label>
+                <input
+                    type="email"
+                    name="member_email"
+                    value="{{ member.member_email }}"
+                    required>
+            </div>
+
+            <div class="input-box">
+                <label>새 비밀번호</label>
+                <input
+                    type="password"
+                    name="member_pw"
+                    placeholder="변경하지 않으려면 비워두세요">
+            </div>
+
+            <div class="input-box">
+                <label>새 비밀번호 확인</label>
+                <input
+                    type="password"
+                    name="member_pw_confirm"
+                    placeholder="비밀번호를 다시 입력하세요">
+            </div>
+
+            <div class="button-area">
+
+                <button type="submit" class="save-btn">
+                    수정하기
+                </button>
+
+                <a href="{{ url_for('dashboard.dashboard') }}" class="cancel-btn">
+                    취소
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% include 'include/footer.html' %}

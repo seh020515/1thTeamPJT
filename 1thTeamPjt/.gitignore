@@ -1,0 +1,37 @@
+# venv
+venv/
+.venv/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+
+# VSCode
+.vscode/
+
+# PyCharm
+.idea/
+
+# Environment
+.env
+
+# Capture Images
+static/captures/
+
+# Generated Logs
+*.log
+
+# SQLite
+*.db
+
+# YOLO Cache
+runs/
+
+# Torch Cache
+*.pt.cache
+
+# Windows
+Thumbs.db
+
+# Mac
+.DS_Store
