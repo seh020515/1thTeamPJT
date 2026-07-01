@@ -1,0 +1,52 @@
+{% include 'include/header.html' %}
+{% include 'include/nav.html' %}
+
+<main class="settings-container">
+
+    <h2>설정</h2>
+
+    <section class="settings-box">
+
+        <form action="{{ url_for('dashboard.settings_save') }}" method="post">
+
+            <div class="input-box">
+                <label>감지 민감도</label>
+
+                <select name="sensitivity">
+                    <option value="low">낮음</option>
+                    <option value="middle" selected>보통</option>
+                    <option value="high">높음</option>
+                </select>
+            </div>
+
+            <div class="input-box">
+                <label>위험 알림 사용</label>
+
+                <select name="alert_enabled">
+                    <option value="on" selected>사용</option>
+                    <option value="off">사용 안 함</option>
+                </select>
+            </div>
+
+            <div class="input-box">
+                <label>영상 저장 여부</label>
+
+                <select name="save_video">
+                    <option value="on">저장</option>
+                    <option value="off" selected>저장 안 함</option>
+                </select>
+            </div>
+
+            <div class="button-area">
+                <button type="submit" class="save-btn">
+                    설정 저장
+                </button>
+            </div>
+
+        </form>
+
+    </section>
+
+</main>
+
+{% include 'include/footer.html' %}
