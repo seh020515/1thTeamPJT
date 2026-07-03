@@ -1,0 +1,6 @@
+{
+    "danger_zone_enabled": "on",
+    "sensitivity": "middle",
+    "alert_enabled": "on",
+    "save_video": "off"
+}
