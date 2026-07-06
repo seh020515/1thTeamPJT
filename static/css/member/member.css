@@ -6,120 +6,186 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px 20px;
+    padding: 48px 20px;
 }
 
 .login-box,
 .signup-box,
 .modify-box {
     width: 450px;
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 44px;
 }
 
 .signup-box {
-    width: 500px;
+    width: 520px;
 }
 
 .modify-box {
-    width: 550px;
+    width: 560px;
 }
 
 .login-box h2,
 .signup-box h2,
 .modify-box h2 {
     text-align: center;
-    margin-bottom: 30px;
-    color: #1f2937;
-}
-
-.input-box {
-    margin-bottom: 20px;
-}
-
-.input-box label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 8px;
-    color: #374151;
-}
-
-.input-box input,
-.input-box select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    font-size: 15px;
-}
-
-.input-box input:focus,
-.input-box select:focus {
-    outline: none;
-    border-color: #2563eb;
-}
-
-.login-btn,
-.signup-btn,
-.save-btn {
-    width: 100%;
-    padding: 14px;
-    margin-top: 10px;
-    background-color: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.login-btn:hover,
-.signup-btn:hover,
-.save-btn:hover {
-    background-color: #1d4ed8;
+    margin-bottom: 34px;
+    color: #f8fafc;
+    font-size: 30px;
 }
 
 .login-menu,
 .signup-menu {
-    margin-top: 25px;
+    margin-top: 26px;
     text-align: center;
 }
 
 .login-menu a,
 .signup-menu a {
-    color: #2563eb;
-    font-weight: bold;
+    color: #38bdf8;
+    font-weight: 800;
 }
 
 .login-menu span,
 .signup-menu span {
     margin: 0 10px;
-    color: #9ca3af;
+    color: #64748b;
 }
 
 .button-area {
     display: flex;
-    gap: 15px;
-    margin-top: 20px;
+    gap: 14px;
+    margin-top: 22px;
 }
 
-.button-area .save-btn {
-    flex: 1;
-}
-
+.button-area .save-btn,
 .cancel-btn {
     flex: 1;
-    background-color: #6b7280;
-    color: white;
     text-align: center;
-    padding: 14px;
-    border-radius: 8px;
-    transition: 0.3s;
 }
 
-.cancel-btn:hover {
-    background-color: #4b5563;
+.auth-page {
+    min-height: calc(100vh - 140px);
+    width: 90%;
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 70px;
+}
+
+.auth-visual {
+    flex: 1.1;
+}
+
+.auth-badge {
+    display: inline-block;
+    padding: 8px 14px;
+    margin-bottom: 24px;
+    border-radius: 999px;
+    background: rgba(34, 197, 94, 0.12);
+    color: #22c55e;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.auth-visual h1 {
+    font-size: 48px;
+    line-height: 1.18;
+    color: #f8fafc;
+    margin-bottom: 24px;
+}
+
+.auth-visual p {
+    width: 90%;
+    color: #94a3b8;
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 34px;
+}
+
+.auth-status-card {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    max-width: 520px;
+}
+
+.auth-status-card div {
+    padding: 18px;
+    border-radius: 18px;
+    background: rgba(15, 23, 42, 0.72);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+}
+
+.auth-status-card strong {
+    display: block;
+    color: #38bdf8;
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.auth-status-card span {
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+.auth-form-wrap {
+    flex: 0.9;
+    display: flex;
+    justify-content: center;
+}
+
+.auth-box {
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-box::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    right: -70px;
+    top: -70px;
+    border-radius: 50%;
+    background: rgba(56, 189, 248, 0.16);
+}
+
+.auth-box h2,
+.auth-subtitle,
+.auth-box form,
+.auth-box .login-menu {
+    position: relative;
+    z-index: 1;
+}
+
+.auth-subtitle {
+    text-align: center;
+    color: #94a3b8;
+    margin: -20px 0 28px;
+}
+
+@media screen and (max-width: 900px) {
+    .auth-page {
+        flex-direction: column;
+        padding: 50px 0;
+    }
+
+    .auth-visual h1 {
+        font-size: 38px;
+    }
+
+    .auth-visual p {
+        width: 100%;
+    }
+
+    .auth-status-card {
+        width: 100%;
+    }
+
+    .auth-form-wrap {
+        width: 100%;
+    }
 }
