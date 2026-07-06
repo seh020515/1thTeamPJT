@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from flask import request, jsonify
 from . import data_alert_bp
 
@@ -14,14 +15,30 @@ from utils.location_manager import save_location, get_location
 
 # ① 감지 결과 저장
 @data_alert_bp.route("/log", methods=["POST"])
+=======
+from flask import request, jsonify                          # request=들어온 요청 읽기, jsonify=파이썬→JSON 변환
+from . import data_alert_bp                                  # 같은 폴더 __init__.py에서 만든 주소 묶음 가져오기
+from utils.log_manager import save_log, load_logs           # 내가 만든 log_manager의 저장/읽기 함수
+from utils.image_manager import save_image                  # 내가 만든 image_manager의 이미지 저장 함수
+from utils.stats_manager import count_today, count_by_hour, count_by_type, count_total   # 통계 함수들
+from utils.location_manager import save_location, get_location
+
+
+# ① 감지결과 받아 저장  (서은호 → 나 : POST /log)
+@data_alert_bp.route("/log", methods=["POST"])              # 누가 /log 주소로 POST를 보내면 아래 함수 실행
+>>>>>>> 9d3acb7396dbb78c0cd92267678f8df37541b455
 def create_log():
     data = request.get_json()
 
+<<<<<<< HEAD
     if not data:
         return jsonify({"error": "JSON 데이터가 필요합니다."}), 400
 
     saved = save_log(data)
     return jsonify(saved), 201
+=======
+    return jsonify(saved), 201                             # 저장된 내용을 돌려줌, 201=만들기 성공 상태코드
+>>>>>>> 9d3acb7396dbb78c0cd92267678f8df37541b455
 
 
 # ② 로그 목록 조회
