@@ -3,44 +3,70 @@
 
 <main class="live-container">
 
-    <h2>실시간 영상</h2>
+    <div class="page-title-box">
+        <div>
+            <h2>실시간 관제</h2>
+            <p>드론 영상과 AI 감지 결과를 실시간으로 확인합니다.</p>
+        </div>
+
+        <span class="live-status">
+            ● LIVE
+        </span>
+    </div>
 
     <section class="live-section">
 
         <div class="live-video-box">
 
-            <img
-                src="{{ url_for('dashboard.video_feed') }}"
-                alt="실시간 드론 영상">
+            <div class="video-top-bar">
+                <span>DRONE CAMERA</span>
+                <strong>ESP32-CAM</strong>
+            </div>
+
+            <div class="video-frame">
+
+                <img src="{{ url_for('dashboard.video_feed') }}" alt="실시간 드론 영상">
+
+
+            </div>
 
         </div>
 
-        <div class="live-info-box">
+        <aside class="live-info-box">
 
             <h3>AI 감지 결과</h3>
 
-            <p>
-                현재 상태:
-                <span class="status safe">
-                    정상
-                </span>
-            </p>
+            <div class="info-row">
+                <span>드론 상태</span>
+                <strong class="status-connected">ONLINE</strong>
+            </div>
 
-            <p>
-                감지 유형:
-                <span>
-                    없음
-                </span>
-            </p>
+            <div class="info-row">
+                <span>카메라 상태</span>
+                <strong class="status-connected">정상</strong>
+            </div>
 
-            <p>
-                감지 시간:
-                <span>
-                    {{ detect_time }}
-                </span>
-            </p>
+            <div class="info-row">
+                <span>AI 상태</span>
+                <strong class="status-warning">감지 중</strong>
+            </div>
 
-        </div>
+            <div class="info-row">
+                <span>감지 유형</span>
+                <strong>사람 탐지</strong>
+            </div>
+
+            <div class="info-row">
+                <span>감지 시간</span>
+                <strong>{{ detect_time }}</strong>
+            </div>
+
+            <div class="info-row">
+                <span>FPS</span>
+                <strong>29</strong>
+            </div>
+
+        </aside>
 
     </section>
 

@@ -52,35 +52,10 @@
             </div>
 
             <div class="video-frame dashboard-video-frame">
-
                 <img
                     src="{{ url_for('dashboard.video_feed') }}"
                     alt="실시간 영상">
-
-                <div class="danger-zone">
-                    위험구역
-                </div>
-
-                <div class="person-box">
-                    PERSON
-                </div>
-
-                <div class="intrusion-warning">
-                    위험 감지 대기
-                </div>
-
             </div>
-
-        </div>
-
-        <div class="video-box map-box-wrapper">
-
-            <div class="video-top-bar">
-                <span>DRONE LOCATION</span>
-                <strong>실시간 위치</strong>
-            </div>
-
-            <div id="drone-map" style="width: 100%; height: 300px;"></div>
 
         </div>
 
@@ -138,33 +113,5 @@
     </section>
 
 </main>
-<script>
-  // 1) 지도 초기화 (초기 좌표는 임시값, 아래서 실제 값으로 갱신됨)
-  const map = L.map('drone-map').setView([35.1587, 129.1604], 15);
 
-  // 2) 지도 배경 타일 불러오기 (OpenStreetMap, 무료)
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap'
-  }).addTo(map);
-
-  // 3) 드론 마커 하나 생성
-  const droneMarker = L.marker([35.1587, 129.1604]).addTo(map)
-    .bindPopup('드론 위치');
-
-  // 4) 3초마다 서버에서 최신 위치 받아와서 마커 이동
-  function updateDroneLocation() {
-    fetch('/location')
-      .then(res => res.json())
-      .then(data => {
-        if (data.lat && data.lng) {
-          const newPos = [data.lat, data.lng];
-          droneMarker.setLatLng(newPos);
-          map.panTo(newPos);
-        }
-      })
-      .catch(err => console.error('위치 불러오기 실패:', err));
-  }
-
-  setInterval(updateDroneLocation, 3000);  // 3초마다 반복
-</script>
 {% include 'include/footer.html' %}

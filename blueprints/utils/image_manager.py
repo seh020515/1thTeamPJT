@@ -5,9 +5,6 @@ CAPTURE_DIR = "static/captures"     #이미지 저장 경로
 
 def save_image(file, drone_id, location):       #이미지 저장함수(파일객체, 드론번호, 위치)
 
-    drone_id = drone_id or "unknown"             #drone_id 없으면 기본값
-    location = location or "미지정"               #location 없으면 기본값
-
     drone_folder = os.path.join(CAPTURE_DIR, f"drone{drone_id}")    #드론별 하위폴더 경로
     os.makedirs(drone_folder, exist_ok=True)                        #폴더없으면 생성
 
@@ -28,3 +25,5 @@ if __name__ == "__main__":          #이 파일 직접실행시 코드동작
                 f.write("dummy image")      #내용 dummy image 문자열로 대체
     result = save_image(DummyFile(), drone_id=2, location="B구역")      #drone_id=드론번호, location="구역명"
     print(result)
+
+    
