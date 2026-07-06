@@ -3,11 +3,7 @@ from . import data_alert_bp                                  # 같은 폴더 __i
 from utils.log_manager import save_log, load_logs           # 내가 만든 log_manager의 저장/읽기 함수
 from utils.image_manager import save_image                  # 내가 만든 image_manager의 이미지 저장 함수
 from utils.stats_manager import count_today, count_by_hour, count_by_type, count_total   # 통계 함수들
-from utils.telegram_notifier import send_telegram_alert     # ★ 8단계: 텔레그램 자동 알림 함수
 from utils.location_manager import save_location, get_location
-
-# ★ 이 신뢰도(confidence) 미만이면 오탐일 가능성이 있어 텔레그램은 생략 (화면 로그에는 그대로 남음)
-ALERT_CONFIDENCE_THRESHOLD = 0.6
 
 
 # ① 감지결과 받아 저장  (서은호 → 나 : POST /log)
@@ -15,12 +11,6 @@ ALERT_CONFIDENCE_THRESHOLD = 0.6
 def create_log():
     data = request.get_json()                              # 서은호가 보낸 JSON 본문을 파이썬 딕셔너리로 꺼내기
     saved = save_log(data)                                 # log_manager.save_log로 파일에 저장(자동으로 id도 붙음)
-
-    # ★ 8단계: 저장 성공 + 신뢰도 충분하면 텔레그램으로 자동 알림
-    #   send_telegram_alert 내부에서 실패해도 예외를 던지지 않으므로 /log 응답 자체는 항상 정상 반환됨
-    confidence = saved.get("confidence", 0)
-    if confidence >= ALERT_CONFIDENCE_THRESHOLD:
-        send_telegram_alert(saved)
 
     return jsonify(saved), 201                             # 저장된 내용을 돌려줌, 201=만들기 성공 상태코드
 
