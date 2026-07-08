@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실시간 영상 모니터링</title>
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/video.css">
+</head>
+<body>
+    <div class="header">
+        <h4 class="header-title">실시간 영상 모니터링</h4>
+        <div class="header-right">
+            <span>관리자</span>
+            <a href="#">로그아웃</a>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <h3>메뉴</h3>
+            <ul>
+                <li><a href="{{ url_for('index') }}">대시보드</a></li>
+                <li><a href="{{ url_for('live_video') }}" class="active">실시간 영상</a></li>
+                <li><a href="{{ url_for('records') }}">기록</a></li>
+                <li><a href="{{ url_for('settings') }}">설정</a></li>
+                <li><a href="{{ url_for('user_settings') }}">사용자 설정</a></li>
+            </ul>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="video-section-grid">
+                
+                <div class="video-zone-box">
+                    <div class="video-display-area">
+                        <img id="live-cam-1" src="{{ url_for('video_feed') }}" alt="실시간 드론 영상 1구역" 
+                             onload="document.getElementById('cam1-fallback').style.display='none';" 
+                             onerror="this.style.display='none'; document.getElementById('cam1-fallback').style.display='block';">
+                        <div id="cam1-fallback" class="fallback-text">실시간 드론 영상<br>1구역 연결 끊김</div>
+                    </div>
+                    <div class="video-info-area">
+                        <p>감지 상태 : <span id="cam1-status" style="font-weight: bold;">정상</span></p>
+                        <p>객체 : <span id="cam1-object">사람</span></p>
+                        <p>시간 : <span class="live-clock">0000-00-00 00:00:00</span></p>
+                    </div>
+                </div>
+
+                <div class="video-zone-box">
+                    <div class="video-display-area">
+                        <div class="fallback-text">실시간 드론 영상<br>2구역 (준비 중)</div>
+                    </div>
+                    <div class="video-info-area">
+                        <p>감지 상태 : <span id="cam2-status">정상</span></p>
+                        <p>객체 : <span id="cam2-object">-</span></p>
+                        <p>시간 : <span class="live-clock">0000-00-00 00:00:00</span></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/video.js') }}"></script>
+</body>
+</html>
