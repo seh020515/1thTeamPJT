@@ -57,7 +57,7 @@ def mouse_callback(event, x, y, flags, param):
 # 카메라 / 영상 설정
 # =========================
 
-VIDEO_PATH = r"C:\seh\firstPjt\1thTeamPJT\1thTeamPjt\video\video.mp4"
+VIDEO_PATH = r"C:\seh\firstPjt\1thTeamPJT\1thTeamPjt\video\1st.mp4"
 ESP32_STREAM_URL = "http://192.168.137.72:81/stream"
 
 # 테스트 영상 사용
