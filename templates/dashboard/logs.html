@@ -5,43 +5,6 @@
 
     <h2>사고 이력</h2>
 
-<<<<<<< HEAD
-        <section class="filter-box">
-
-            <a href="{{ url_for('dashboard.logs') }}"
-            class="filter-btn {% if selected_type == 'all' %}active{% endif %}">
-                전체
-            </a>
-
-            <a href="{{ url_for('dashboard.logs') }}?type=intrusion"
-            class="filter-btn {% if selected_type == 'intrusion' %}active{% endif %}">
-                침입
-            </a>
-
-            <a href="{{ url_for('dashboard.logs') }}?type=drowning"
-            class="filter-btn {% if selected_type == 'drowning' %}active{% endif %}">
-                익수
-            </a>
-
-            <a href="{{ url_for('dashboard.logs') }}?type=rescue"
-            class="filter-btn {% if selected_type == 'rescue' %}active{% endif %}">
-                구조요청
-            </a>
-
-    </section>
-=======
-    <div class="filter-box">
-        <a href="{{ url_for('dashboard.logs', type='all') }}"
-           class="filter-btn {{ 'active' if selected_type == 'all' }}">전체</a>
-        <a href="{{ url_for('dashboard.logs', type='intrusion') }}"
-           class="filter-btn {{ 'active' if selected_type == 'intrusion' }}">위험구역 침입</a>
-        <a href="{{ url_for('dashboard.logs', type='drowning') }}"
-           class="filter-btn {{ 'active' if selected_type == 'drowning' }}">익수</a>
-        <a href="{{ url_for('dashboard.logs', type='rescue') }}"
-           class="filter-btn {{ 'active' if selected_type == 'rescue' }}">구조요청</a>
-    </div>
->>>>>>> 9d3acb7396dbb78c0cd92267678f8df37541b455
-
     <section class="logs-box">
 
         <table>
@@ -63,21 +26,9 @@
                 <tr>
                     <td>{{ loop.index }}</td>
                     <td>{{ log.time }}</td>
-<<<<<<< HEAD
-                    <td>{{ log.type_name }}</td>
-=======
-                    <td>{{ log.type_name or log.type }}</td>
->>>>>>> 9d3acb7396dbb78c0cd92267678f8df37541b455
+                    <td>{{ log.type }}</td>
                     <td>{{ log.location }}</td>
                     <td>{{ log.status }}</td>
-                </tr>
-
-                {% else %}
-
-                <tr>
-                    <td colspan="5" class="empty-log">
-                        사고 이력이 없습니다.
-                    </td>
                 </tr>
 
                 {% endfor %}
