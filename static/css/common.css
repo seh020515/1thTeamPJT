@@ -4,9 +4,9 @@
 
 body {
     margin: 0;
-    font-family: "Pretendard", "Noto Sans KR", Arial, sans-serif;
-    background: linear-gradient(135deg, #0f172a, #1e293b);
-    color: #e5e7eb;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #222;
 }
 
 a {
@@ -15,49 +15,42 @@ a {
 }
 
 header {
-    height: 72px;
-    background: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    height: 70px;
+    background-color: #1f2937;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 48px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    padding: 0 40px;
 }
 
 .logo a {
-    font-size: 21px;
-    font-weight: 800;
-    letter-spacing: 1px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 28px;
+    gap: 24px;
     margin: 0;
     padding: 0;
 }
 
 nav a {
     font-size: 15px;
-    color: #cbd5e1;
-    transition: 0.25s;
 }
 
 nav a:hover {
-    color: #38bdf8;
+    color: #60a5fa;
 }
 
 footer {
-    margin-top: 80px;
-    padding: 24px;
+    margin-top: 60px;
+    padding: 20px;
     text-align: center;
-    color: #94a3b8;
+    background-color: #1f2937;
+    color: white;
 }
 
 h1, h2, h3 {
@@ -72,101 +65,71 @@ button {
 input,
 select {
     width: 100%;
-    padding: 13px 14px;
-    border: 1px solid rgba(148, 163, 184, 0.35);
-    border-radius: 10px;
-    background: rgba(15, 23, 42, 0.75);
-    color: #f8fafc;
-}
-
-input::placeholder {
-    color: #94a3b8;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
 }
 
 .input-box {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .input-box label {
     display: block;
     margin-bottom: 8px;
-    font-weight: 700;
-    color: #cbd5e1;
-}
-
-.card,
-.dashboard-bottom,
-.logs-box,
-.statistics-chart,
-.settings-box,
-.login-box,
-.signup-box,
-.modify-box,
-.main-box,
-.video-box,
-.live-video-box,
-.live-info-box {
-    background: rgba(15, 23, 42, 0.76);
-    border: 1px solid rgba(148, 163, 184, 0.18);
-    border-radius: 18px;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
-    backdrop-filter: blur(18px);
+    font-weight: bold;
 }
 
 .card {
-    padding: 28px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    overflow: hidden;
-    color: #e5e7eb;
+    background-color: white;
 }
 
 th,
 td {
-    border-bottom: 1px solid rgba(148, 163, 184, 0.16);
-    padding: 15px;
+    border: 1px solid #ddd;
+    padding: 14px;
     text-align: center;
 }
 
 th {
-    background: rgba(30, 41, 59, 0.9);
-    color: #93c5fd;
+    background-color: #e5e7eb;
 }
 
-td {
-    color: #cbd5e1;
-}
-
-tr:hover {
-    background: rgba(56, 189, 248, 0.06);
+.button-area {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
 }
 
 .save-btn,
 .login-btn,
 .signup-btn {
     width: 100%;
-    padding: 14px;
-    background: linear-gradient(135deg, #2563eb, #06b6d4);
+    padding: 13px;
+    background-color: #2563eb;
     color: white;
-    border-radius: 11px;
+    border-radius: 6px;
     font-size: 16px;
-    font-weight: 800;
-    transition: 0.25s;
 }
 
 .save-btn:hover,
 .login-btn:hover,
 .signup-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.35);
+    background-color: #1d4ed8;
 }
 
 .cancel-btn {
-    padding: 14px 24px;
-    background: rgba(100, 116, 139, 0.8);
+    padding: 13px 24px;
+    background-color: #6b7280;
     color: white;
-    border-radius: 11px;
+    border-radius: 6px;
 }

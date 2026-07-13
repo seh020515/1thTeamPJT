@@ -1,89 +1,48 @@
 {% include 'include/header.html' %}
 
-<div class="auth-page">
+<div class="login-container">
 
-    <div class="auth-visual">
+    <div class="login-box">
 
-        <span class="auth-badge">SECURE ACCESS</span>
+        <h2>로그인</h2>
 
-        <h1>
-            드론 관제 시스템<br>
-            로그인
-        </h1>
+        <form action="{{ url_for('member.signin') }}" method="post">
 
-        <p>
-            실시간 영상, 위험 감지 현황, 사고 이력을
-            안전하게 관리하기 위한 관리자 전용 페이지입니다.
-        </p>
-
-        <div class="auth-status-card">
-            <div>
-                <strong>LIVE</strong>
-                <span>Monitoring</span>
+            <div class="input-box">
+                <label>아이디</label>
+                <input
+                    type="text"
+                    name="member_id"
+                    placeholder="아이디를 입력하세요"
+                    required>
             </div>
 
-            <div>
-                <strong>AI</strong>
-                <span>Detection</span>
+            <div class="input-box">
+                <label>비밀번호</label>
+                <input
+                    type="password"
+                    name="member_pw"
+                    placeholder="비밀번호를 입력하세요"
+                    required>
             </div>
 
-            <div>
-                <strong>24H</strong>
-                <span>Control</span>
-            </div>
-        </div>
+            <button type="submit" class="login-btn">
+                로그인
+            </button>
 
-    </div>
+        </form>
 
-    <div class="auth-form-wrap">
+        <div class="login-menu">
 
-        <div class="login-box auth-box">
+            <a href="{{ url_for('member.signup_form') }}">
+                회원가입
+            </a>
 
-            <h2>로그인</h2>
+            <span>|</span>
 
-            <p class="auth-subtitle">
-                계정 정보를 입력해 주세요.
-            </p>
-
-            <form action="{{ url_for('member.signin') }}" method="post">
-
-                <div class="input-box">
-                    <label>아이디</label>
-                    <input
-                        type="text"
-                        name="member_id"
-                        placeholder="아이디를 입력하세요"
-                        required>
-                </div>
-
-                <div class="input-box">
-                    <label>비밀번호</label>
-                    <input
-                        type="password"
-                        name="member_pw"
-                        placeholder="비밀번호를 입력하세요"
-                        required>
-                </div>
-
-                <button type="submit" class="login-btn">
-                    로그인
-                </button>
-
-            </form>
-
-            <div class="login-menu">
-
-                <a href="{{ url_for('member.signup_form') }}">
-                    회원가입
-                </a>
-
-                <span>|</span>
-
-                <a href="{{ url_for('index') }}">
-                    메인으로
-                </a>
-
-            </div>
+            <a href="{{ url_for('index') }}">
+                메인으로
+            </a>
 
         </div>
 

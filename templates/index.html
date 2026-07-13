@@ -1,55 +1,27 @@
 {% include 'include/header.html' %}
 
-<div class="hero-container">
+<div class="main-container">
 
-    <div class="hero-left">
-        <span class="hero-badge">AI DRONE CONTROL SYSTEM</span>
+    <div class="main-box">
 
-        <h1>
-            실시간 위험 감지<br>
-            드론 관제 시스템
-        </h1>
+        <h1>드론 관제 시스템</h1>
 
         <p>
-            AI 영상 분석으로 위험 구역 침입을 감지하고,
-            관제 대시보드에서 실시간으로 상태를 확인합니다.
+            AI 기반 드론 위험 감지 및 실시간 관제 시스템
         </p>
 
-        <div class="hero-buttons">
-            <a href="{{ url_for('member.signin_form') }}" class="primary-btn">
+        <div class="main-btn">
+
+            <a href="{{ url_for('member.signin_form') }}">
                 로그인
             </a>
 
-            <a href="{{ url_for('member.signup_form') }}" class="secondary-btn">
+            <a href="{{ url_for('member.signup_form') }}">
                 회원가입
             </a>
+
         </div>
-    </div>
 
-    <div class="hero-right">
-        <div class="drone-card">
-            <div class="status-line">
-                <span></span>
-                LIVE MONITORING
-            </div>
-
-            <div class="mock-screen">
-                <div class="scan-line"></div>
-                <p>DRONE CAMERA</p>
-            </div>
-
-            <div class="info-grid">
-                <div>
-                    <strong>98%</strong>
-                    <small>Connection</small>
-                </div>
-
-                <div>
-                    <strong>SAFE</strong>
-                    <small>Status</small>
-                </div>
-            </div>
-        </div>
     </div>
 
 </div>

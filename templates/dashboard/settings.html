@@ -10,21 +10,12 @@
         <form action="{{ url_for('dashboard.settings_save') }}" method="post">
 
             <div class="input-box">
-                <label>위험구역 사용</label>
-
-                <select name="danger_zone_enabled">
-                    <option value="on" {% if settings.danger_zone_enabled == "on" %}selected{% endif %}>ON</option>
-                    <option value="off" {% if settings.danger_zone_enabled == "off" %}selected{% endif %}>OFF</option>
-                </select>
-            </div>
-
-            <div class="input-box">
                 <label>감지 민감도</label>
 
                 <select name="sensitivity">
-                    <option value="low" {% if settings.sensitivity == "low" %}selected{% endif %}>낮음</option>
-                    <option value="middle" {% if settings.sensitivity == "middle" %}selected{% endif %}>보통</option>
-                    <option value="high" {% if settings.sensitivity == "high" %}selected{% endif %}>높음</option>
+                    <option value="low">낮음</option>
+                    <option value="middle" selected>보통</option>
+                    <option value="high">높음</option>
                 </select>
             </div>
 
@@ -32,8 +23,8 @@
                 <label>위험 알림 사용</label>
 
                 <select name="alert_enabled">
-                    <option value="on" {% if settings.alert_enabled == "on" %}selected{% endif %}>사용</option>
-                    <option value="off" {% if settings.alert_enabled == "off" %}selected{% endif %}>사용 안 함</option>
+                    <option value="on" selected>사용</option>
+                    <option value="off">사용 안 함</option>
                 </select>
             </div>
 
@@ -41,42 +32,9 @@
                 <label>영상 저장 여부</label>
 
                 <select name="save_video">
-                    <option value="on" {% if settings.save_video == "on" %}selected{% endif %}>저장</option>
-                    <option value="off" {% if settings.save_video == "off" %}selected{% endif %}>저장 안 함</option>
+                    <option value="on">저장</option>
+                    <option value="off" selected>저장 안 함</option>
                 </select>
-            </div>
-
-            <div class="status-box">
-                <h3>장비 상태</h3>
-
-                <div class="status-row">
-                    <span>카메라 상태</span>
-                    <strong class="status-connected">● 연결됨</strong>
-                </div>
-
-                <div class="status-row">
-                    <span>드론 상태</span>
-                    <strong class="status-connected">● ONLINE</strong>
-                </div>
-
-                <div class="status-row">
-                    <span>AI 감지 상태</span>
-                    <strong class="status-warning">● 감지 대기</strong>
-                </div>
-            </div>
-
-            <div class="user-box">
-                <h3>사용자 관리</h3>
-
-                <div class="status-row">
-                    <span>현재 사용자</span>
-                    <strong>관리자</strong>
-                </div>
-
-                <div class="status-row">
-                    <span>권한</span>
-                    <strong>CONTROL ADMIN</strong>
-                </div>
             </div>
 
             <div class="button-area">
