@@ -1,0 +1,38 @@
+[
+  {
+    "type": "drowning",
+    "location": "3구역",
+    "confidence": 0.9,
+    "type_name": "익수",
+    "status": "미처리",
+    "time": "2026-07-02 15:55:32",
+    "id": 4
+  },
+  {
+    "type": "intrusion",
+    "location": "1구역",
+    "confidence": 0.85,
+    "type_name": "위험구역 침입",
+    "status": "미처리",
+    "time": "2026-07-02 14:02:52",
+    "id": 3
+  },
+  {
+    "type": "intrusion",
+    "location": "1구역",
+    "confidence": 0.85,
+    "type_name": "위험구역 침입",
+    "status": "미처리",
+    "time": "2026-07-02 14:02:47",
+    "id": 2
+  },
+  {
+    "type": "intrusion",
+    "location": "1구역",
+    "confidence": 0.85,
+    "type_name": "위험구역 침입",
+    "status": "미처리",
+    "time": "2026-07-02 13:55:05",
+    "id": 1
+  }
+]

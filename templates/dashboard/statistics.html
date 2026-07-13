@@ -45,11 +45,19 @@
 
     </section>
 
+    <section class="statistics-chart">
+
+        <h3>시간대별 사고 발생</h3>
+
+        <canvas id="hourChart"></canvas>
+
+    </section>
+
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 <script>
     const labels = JSON.parse('{{ labels | tojson | safe }}');
@@ -59,6 +67,9 @@
     const typeValues = JSON.parse('{{ type_values | tojson | safe }}');
 
     const dailyCtx = document.getElementById('dailyChart');
+    const hourLabels = JSON.parse('{{ hour_labels | tojson | safe }}');
+    const hourValues = JSON.parse('{{ hour_values | tojson | safe }}');
+
 
     new Chart(dailyCtx, {
         type: 'line',
@@ -84,5 +95,19 @@
             }]
         }
     });
+const hourCtx = document.getElementById('hourChart');
+
+new Chart(hourCtx, {
+    type: 'bar',
+    data: {
+        labels: hourLabels,
+        datasets: [{
+            label: '사고 발생 건수',
+            data: hourValues,
+            borderWidth: 1
+        }]
+    }
+});
+
 </script>
 {% include 'include/footer.html' %}

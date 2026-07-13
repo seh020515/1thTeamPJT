@@ -8,7 +8,7 @@ from ultralytics import YOLO   # # pyright: ignore[reportMissingImports]  실시
 class DroneManager:
     def __init__(self):
         # 💡 ESP32-CAM 드론 카메라의 실시간 비디오 스트리밍 주소 설정
-        self.url = 'http://192.168.137.86:81/stream'
+        self.url = 'http://192.168.137.44:81/stream'
         
         # 💡 YOLOv8 나노버전(가볍고 빠른 모델) AI 가중치 파일 로드
         self.model = YOLO('yolov8n.pt')

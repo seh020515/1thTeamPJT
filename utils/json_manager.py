@@ -1,58 +1,130 @@
 import json
 import os
+from datetime import datetime
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-MEMBER_FILE = os.path.join(BASE_DIR, "db", "members.json")
-INTRUSION_LOG_FILE = os.path.join(BASE_DIR, "db", "intrusion_log.json")
 
-def load_members():
+DB_DIR = os.path.join(BASE_DIR, "db")
+SETTINGS_FILE = os.path.join(DB_DIR, "settings.json")
+LOG_FILE = os.path.join(DB_DIR, "detection_logs.json")
+DANGER_ZONE_FILE = os.path.join(DB_DIR, "danger_zone.json")
+
+
+def ensure_db_dir():
+    if not os.path.exists(DB_DIR):
+        os.makedirs(DB_DIR)
+
+
+def get_default_settings():
+    return {
+        "danger_zone_enabled": "on",
+        "sensitivity": "middle",
+        "alert_enabled": "on",
+        "save_video": "off"
+    }
+
+
+def get_default_logs():
+    return []
+
+
+def get_default_danger_zone():
+    return {
+        "x1": 250,
+        "y1": 100,
+        "x2": 550,
+        "y2": 350
+    }
+
+
+def load_json(file_path, default_data):
+    ensure_db_dir()
+
+    if not os.path.exists(file_path):
+        save_json(file_path, default_data)
+        return default_data
 
     try:
-        with open(MEMBER_FILE, encoding = 'utf-8') as f:
-            return json.load(f)
+        with open(file_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        if not data:
+            return default_data
+
+        return data
 
     except:
-        return {}
+        save_json(file_path, default_data)
+        return default_data
 
-def save_members(members):
 
-    with open(MEMBER_FILE, "w", encoding='utf-8') as f:
-        json.dump(
-            members,
-            f,
-            ensure_ascii = False,
-            indent = 4
-        )
+def save_json(file_path, data):
+    ensure_db_dir()
+
+    with open(file_path, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+
+
+# =========================
+# 설정
+# =========================
+
+def load_settings():
+    return load_json(SETTINGS_FILE, get_default_settings())
+
+
+def save_settings(settings):
+    save_json(SETTINGS_FILE, settings)
+
+
+# =========================
+# 로그
+# =========================
+
+def load_logs():
+    return load_json(LOG_FILE, get_default_logs())
+
+
+def save_logs(logs):
+    save_json(LOG_FILE, logs)
+
+
+def add_log(log_type, type_name, location, status):
+    logs = load_logs()
+
+    new_log = {
+        "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "type": log_type,
+        "type_name": type_name,
+        "location": location,
+        "status": status
+    }
+
+    logs.insert(0, new_log)
+    save_logs(logs)
+
+    return new_log
+
+
+# =========================
+# YOLO 감지 로그용
+# =========================
 
 def load_intrusion_logs():
-
-    try:
-        with open(INTRUSION_LOG_FILE, encoding='utf-8') as f:
-            return json.load(f)
-
-    except:
-        return []
+    return load_logs()
 
 
 def save_intrusion_logs(logs):
+    save_logs(logs)
 
-    with open(INTRUSION_LOG_FILE, "w", encoding='utf-8') as f:
-        json.dump(
-            logs,
-            f,
-            ensure_ascii=False,
-            indent=4
-        )
 
-DANGER_ZONE_FILE = os.path.join(BASE_DIR, "db", "danger_zone.json")
+# =========================
+# 위험구역 좌표
+# =========================
 
 def load_danger_zone():
-    try:
-        with open(DANGER_ZONE_FILE, encoding='utf-8') as f:
-            return json.load(f)
-    except:
-        return {"x1": 250, "y1": 100, "x2": 550, "y2": 350}
+    return load_json(DANGER_ZONE_FILE, get_default_danger_zone())
+
 
 def save_danger_zone(zone):
-    with open(DANGER_ZONE_FILE, "w", encoding='utf-8') as f:
-        json.dump(zone, f, ensure_ascii=False, indent=4)
+    save_json(DANGER_ZONE_FILE, zone)
